@@ -26,5 +26,5 @@ public enum EnumSingleton {
     public static void main(String[] args) {
         EnumSingleton.SINGLETON.getID();
     }
-    AtomicInteger
+
 }

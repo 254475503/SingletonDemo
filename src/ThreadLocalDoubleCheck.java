@@ -1,18 +1,18 @@
 public class ThreadLocalDoubleCheck {
-    //Ç¿ĞĞĞã¼¼ÊõĞÍµÄÊ¹ÓÃthreadlocalÀ´doublecheck¡£
-    //ThreadLocal¿ÉÒÔ°ÑËûÀí½âÎªÃ¿¸öÏß³Ì¶¼³ÖÓĞµÄ£¬ÇÒ¶¼²»Ò»ÑùµÄÒ»¸ö¾Ö²¿±äÁ¿¡£±ÈÈçËµÏß³Ì1·ÃÎÊÕâÀïµÄthreadlocalºÍÏß³Ì2Ïß³Ì3·ÃÎÊµÄ¶¼²»Ò»Ñù¡£
-    //ËûÊÇÔõÃ´ÊµÏÖµÄÄØ£¿ThreadÀàÖĞÓĞÒ»¸öThreadLocal.ThreadLocalMap threadLocals = null;Õâ¸öthreadLocalsÊÇÒ»¸ömapÕâ¸ömap±£´æÁË
-    //Õâ¸öÏß³Ì¶ÔÏóÓĞ¹ØµÄËùÓĞThreadLocal¶ÔÏóÓëÆä¶ÔÓ¦µÄÖµ¡£ÔÚÕâ¸ömapÖĞ£¬ThreadLocal¶ÔÏóÎªkey£¬ThreadLocal¶ÔÏó¶ÔÓ¦µÄÖµÎªvalue¡£±ÈÈç
-    //ÔÙÕâ¸öÀı×ÓÖĞÏß³Ì1·ÃÎÊgetInstance·½·¨£¬ÔÙµÚÒ»´ÎÅö¼ûÁËthreadLocalDoubleCheckThreadLocal.get()£¬Ëı¾Í»á·¢ÏÖ×Ô¼ºµÄthreadLocals==null
-    //Ëû¾Í»á¸ù¾İthis(threadLocalDoubleCheckThreadLocal)ºÍvalue(null)È¥´´½¨Ò»¸ömap¡£È»ºóÔÙÅĞ¶Ïinstance==null ÄÇ¾Íinstance = new ThreadLocalDoubleCheck();
-    //×îºóµ÷ÓÃthreadLocalDoubleCheckThreadLocal.set(instance);´ËÊ±ÒÀÈ»ÒÔthis(threadLocalDoubleCheckThreadLocal)Îªkey instanceÎªvalue
-    //Ïë±¾Ïß³ÌµÄthreadLocalsÖĞ¼ÓÈëÒ»¸ö¼üÖµ¶Ô¡£
-    //ÆäÊµ±¾Àı×ÓÖĞÊ®¸öÏß³ÌÀïÃæµÄthreadlocalsÀïÃæ×°µÄ¶¼ÊÇÒ»ÑùµÄ= = ÕâÀïÖ»ÊÇÓÃÀ´ÅĞ¶ÏÏß³ÌÓĞÃ»ÓĞ½øÈë¹ıÕâ¸öÍ¬²½´úÂë¿é£¬ÅĞ¶Ï½øÈë¹ıÁË£¬Ö®ºó¾Í
-    //²»ÔÙ½øÈëÍ¬²½´úÂë¿éÁË¡£Ò»°ãÀ´ËµÃ¿¸öÏß³ÌµÄthreadLocalsÀïÃæÏàÍ¬µÄkey¶ÔÓ¦µÄvalue¶¼Ó¦¸ÃÊÇÉèÖÃÎª²»Í¬µÄ¡£ÓÃÒÔÇø·ÖÃ¿¸öÏß³Ì¡£µ«ÊÇ¾ßÌå
-    //ÓÃ·¨¾ßÌå·ÖÎöÂï¡£
-    //ÆäÊµÕâ¸öÀı×ÓĞ´µÄÎÒºÜ²»Ï²»¶£¬¸Ğ¾õ¾ÍÊÇÇ¿ĞĞĞãÒ»²¨ThreadLocal£¬²»¹ı½èÕâ¸ö»ú»áÁË½âÒ»ÏÂÒ²Í¦ºÃµÄ¡£ÎªÊ²Ã´²»Ï²»¶Õâ¸öÀı×Ó£¬ÆäÊµÕâ¸öÀı×Ó
-    //µÄĞ§ÂÊ±ÈÖ®Ç°»¹ÒªÂÔÎ¢µÍÏÂÒ»µã¡£²»½öÃ¿¸öÏß³Ì¶àÎ¬»¤ÁËÒ»¸öthreadLocals£¬¶øÇÒÊ®¸öÏß³Ì¾Í¶àÁËÊ®´ÎthreadLocalDoubleCheckThreadLocal.set ºÍget¡£
-    //¶øÇÒ²¢Ã»ÓĞÈÃcheckµÄ´ÎÊı±äÉÙ¡£ËùÒÔÃ»ÓĞÌØÊâĞèÒª£¬ÍêÈ«ÊÇÃ»±ØÒªÔÙµ¥ÀıÄ£Ê½ÏÂÒıÈëThreadLocal¡£
+    //å¼ºè¡Œç§€æŠ€æœ¯å‹çš„ä½¿ç”¨threadlocalæ¥doublecheckã€‚
+    //ThreadLocalå¯ä»¥æŠŠä»–ç†è§£ä¸ºæ¯ä¸ªçº¿ç¨‹éƒ½æŒæœ‰çš„ï¼Œä¸”éƒ½ä¸ä¸€æ ·çš„ä¸€ä¸ªå±€éƒ¨å˜é‡ã€‚æ¯”å¦‚è¯´çº¿ç¨‹1è®¿é—®è¿™é‡Œçš„threadlocalå’Œçº¿ç¨‹2çº¿ç¨‹3è®¿é—®çš„éƒ½ä¸ä¸€æ ·ã€‚
+    //ä»–æ˜¯æ€ä¹ˆå®ç°çš„å‘¢ï¼ŸThreadç±»ä¸­æœ‰ä¸€ä¸ªThreadLocal.ThreadLocalMap threadLocals = null;è¿™ä¸ªthreadLocalsæ˜¯ä¸€ä¸ªmapè¿™ä¸ªmapä¿å­˜äº†
+    //è¿™ä¸ªçº¿ç¨‹å¯¹è±¡æœ‰å…³çš„æ‰€æœ‰ThreadLocalå¯¹è±¡ä¸å…¶å¯¹åº”çš„å€¼ã€‚åœ¨è¿™ä¸ªmapä¸­ï¼ŒThreadLocalå¯¹è±¡ä¸ºkeyï¼ŒThreadLocalå¯¹è±¡å¯¹åº”çš„å€¼ä¸ºvalueã€‚æ¯”å¦‚
+    //å†è¿™ä¸ªä¾‹å­ä¸­çº¿ç¨‹1è®¿é—®getInstanceæ–¹æ³•ï¼Œå†ç¬¬ä¸€æ¬¡ç¢°è§äº†threadLocalDoubleCheckThreadLocal.get()ï¼Œå¥¹å°±ä¼šå‘ç°è‡ªå·±çš„threadLocals==null
+    //ä»–å°±ä¼šæ ¹æ®this(threadLocalDoubleCheckThreadLocal)å’Œvalue(null)å»åˆ›å»ºä¸€ä¸ªmapã€‚ç„¶åå†åˆ¤æ–­instance==null é‚£å°±instance = new ThreadLocalDoubleCheck();
+    //æœ€åè°ƒç”¨threadLocalDoubleCheckThreadLocal.set(instance);æ­¤æ—¶ä¾ç„¶ä»¥this(threadLocalDoubleCheckThreadLocal)ä¸ºkey instanceä¸ºvalue
+    //æƒ³æœ¬çº¿ç¨‹çš„threadLocalsä¸­åŠ å…¥ä¸€ä¸ªé”®å€¼å¯¹ã€‚
+    //å…¶å®æœ¬ä¾‹å­ä¸­åä¸ªçº¿ç¨‹é‡Œé¢çš„threadlocalsé‡Œé¢è£…çš„éƒ½æ˜¯ä¸€æ ·çš„= = è¿™é‡Œåªæ˜¯ç”¨æ¥åˆ¤æ–­çº¿ç¨‹æœ‰æ²¡æœ‰è¿›å…¥è¿‡è¿™ä¸ªåŒæ­¥ä»£ç å—ï¼Œåˆ¤æ–­è¿›å…¥è¿‡äº†ï¼Œä¹‹åå°±
+    //ä¸å†è¿›å…¥åŒæ­¥ä»£ç å—äº†ã€‚ä¸€èˆ¬æ¥è¯´æ¯ä¸ªçº¿ç¨‹çš„threadLocalsé‡Œé¢ç›¸åŒçš„keyå¯¹åº”çš„valueéƒ½åº”è¯¥æ˜¯è®¾ç½®ä¸ºä¸åŒçš„ã€‚ç”¨ä»¥åŒºåˆ†æ¯ä¸ªçº¿ç¨‹ã€‚ä½†æ˜¯å…·ä½“
+    //ç”¨æ³•å…·ä½“åˆ†æå˜›ã€‚
+    //å…¶å®è¿™ä¸ªä¾‹å­å†™çš„æˆ‘å¾ˆä¸å–œæ¬¢ï¼Œæ„Ÿè§‰å°±æ˜¯å¼ºè¡Œç§€ä¸€æ³¢ThreadLocalï¼Œä¸è¿‡å€Ÿè¿™ä¸ªæœºä¼šäº†è§£ä¸€ä¸‹ä¹ŸæŒºå¥½çš„ã€‚ä¸ºä»€ä¹ˆä¸å–œæ¬¢è¿™ä¸ªä¾‹å­ï¼Œå…¶å®è¿™ä¸ªä¾‹å­
+    //çš„æ•ˆç‡æ¯”ä¹‹å‰è¿˜è¦ç•¥å¾®ä½ä¸‹ä¸€ç‚¹ã€‚ä¸ä»…æ¯ä¸ªçº¿ç¨‹å¤šç»´æŠ¤äº†ä¸€ä¸ªthreadLocalsï¼Œè€Œä¸”åä¸ªçº¿ç¨‹å°±å¤šäº†åæ¬¡threadLocalDoubleCheckThreadLocal.set å’Œgetã€‚
+    //è€Œä¸”å¹¶æ²¡æœ‰è®©checkçš„æ¬¡æ•°å˜å°‘ã€‚æ‰€ä»¥æ²¡æœ‰ç‰¹æ®Šéœ€è¦ï¼Œå®Œå…¨æ˜¯æ²¡å¿…è¦å†å•ä¾‹æ¨¡å¼ä¸‹å¼•å…¥ThreadLocalã€‚
     private static ThreadLocalDoubleCheck instance ;
     private static ThreadLocal<ThreadLocalDoubleCheck> threadLocalDoubleCheckThreadLocal = new ThreadLocal<ThreadLocalDoubleCheck>();
     private ThreadLocalDoubleCheck()

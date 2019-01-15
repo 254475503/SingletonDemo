@@ -5,8 +5,8 @@ public class SynchronizedMethodLazySingleton {
     }
     private static SynchronizedMethodLazySingleton synchronizedMethodLazySingleton;
 
-    public synchronized SynchronizedMethodLazySingleton  getInstance()//ÕâÖÖÍ¬²½·½·¨ÊµÏÖµÄÀÁººÊ½ºÍÍ¬²½´úÂë¿éÊµÏÖµÄÏß³Ì°²È«ÀÁººÊ½¶¼ÓĞÒ»¸ö
-            //È±µã¾ÍÊÇĞ§ÂÊÌ«µÍ¡£
+    public synchronized SynchronizedMethodLazySingleton  getInstance()//è¿™ç§åŒæ­¥æ–¹æ³•å®ç°çš„æ‡’æ±‰å¼å’ŒåŒæ­¥ä»£ç å—å®ç°çš„çº¿ç¨‹å®‰å…¨æ‡’æ±‰å¼éƒ½æœ‰ä¸€ä¸ª
+            //ç¼ºç‚¹å°±æ˜¯æ•ˆç‡å¤ªä½ã€‚
     {
         if(synchronizedMethodLazySingleton==null)
             synchronizedMethodLazySingleton = new SynchronizedMethodLazySingleton();
